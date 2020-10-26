@@ -1,0 +1,105 @@
+<HTML>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/a7e5305de0.js" crossorigin="anonymous"></script>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+    <title>Artistia</title>
+</head>
+
+<body style="background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+    <section id="search">
+
+        <div class="row">
+            <div class="col-sm-12 my-auto bg-danger" style="padding: 50px;">
+                <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px" width="200px"></center>
+        </div>
+
+    </section>
+
+    <section id="main">
+
+        <div class="row" , style="padding: 20px;">
+            <div class="pricing-col col-lg-1 col-md-1" , style="padding: 20px;"></div>
+            <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
+                <center>
+                    <div>
+                        <div class="card bg-danger">
+                            <img class="card-img-top text-white" src="placeholder.png" alt="no picture selected"
+                                width="200" height="300">
+                            <div class="card-body">
+                                <form action = "/stylize" method = "post" enctype="multipart/form-data">
+                                    <div class="form-group text-white">
+                                        <label for="exampleFormControlFile1"><strong>Choose a content
+                                                image</strong></label>
+                                        <input type="file" class="form-control-file" name="source">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="pricing-col col-lg-2 col-md-1" , style="padding: 20px;"></div>
+            <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
+                <center>
+                    <div>
+                        <div class="card bg-danger">
+                            <img class="card-img-top text-white" src="placeholder.png" alt="no picture selected"
+                                width="200" height="300">
+                            <div class="card-body">
+                                    <div class="form-group text-white">
+                                        <label for="exampleFormControlFile1"><strong>Choose a style
+                                                image</strong></label>
+                                        <input type="file" class="form-control-file" name="style">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="pricing-col col-lg-4 col-md-1" , style="padding: 20px;"></div>
+            <center>    <div style="padding-top: 20px;"></div>
+                                    <center>
+                                        <button type="submit" class="btn btn-lg btn-warning" style="width: 300;">Stylize Image</button>
+                                    </center>
+                                </div>
+                                </form>
+            </center>
+            <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
+                <center>
+                    <div>
+                        <div class="card bg-danger">
+                            <img class="card-img-top text-white" src={{url_for('static', filename = 'result.png')}} alt="error" width="200"
+                                height="300">
+                            <div class="card-body">
+                                <h5 class="text-white">Result Image</h5>
+                                <p class="text-white">Here is the stylized output</p>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+
+    </section>
+
+</body>
