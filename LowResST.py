@@ -151,17 +151,14 @@ def styleTransfer(sourcepath, stylepath):
 
     # print(h, w)
 
-    fig = plt.figure()
-
-    img_content = image.load_img(content_path, target_size=(h, w))
-    ax1 = fig.add_subplot(1, 2, 1)
-    ax1.imshow(img_content)
-
-    img_style = image.load_img(style_path, target_size=(h, w))
-    ax2 = fig.add_subplot(1, 2, 2)
-    ax2.imshow(img_style)
-
-    plt.show()
+    # fig = plt.figure()
+    # img_content = image.load_img(content_path, target_size=(h, w))
+    # ax1 = fig.add_subplot(1, 2, 1)
+    # ax1.imshow(img_content)
+    # img_style = image.load_img(style_path, target_size=(h, w))
+    # ax2 = fig.add_subplot(1, 2, 2)
+    # ax2.imshow(img_style)
+    # plt.show()
 
     # loading and preprocessing input images
     content_img = load_img_and_preprocess(content_path, (h, w))
@@ -214,5 +211,7 @@ def styleTransfer(sourcepath, stylepath):
 
     final_img = minimize(get_loss_and_grads_wrapper, 10, batch_shape, img)
 
-    plt.imshow(scale_img(final_img))
-    plt.show()
+    # plt.imshow(scale_img(final_img))
+    # plt.show()
+    fname = "static/result.png"
+    image.save_img(fname, scale_img(final_img))
