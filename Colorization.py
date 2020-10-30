@@ -35,5 +35,5 @@ def color():
     result[:, :, 0] = img_color[0][:, :, 0]
     result[:, :, 1:] = output[0]
     final_img = lab2rgb(result)
-    fname = "static/result.png"
+    fname = "static/result_color.png"
     image.save_img(fname, final_img)
