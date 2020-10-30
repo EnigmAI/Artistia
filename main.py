@@ -5,17 +5,23 @@ import requests
 from flask import Flask, request, render_template, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 import HighResST
+import LowResST
 import Colorization
+
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 sourcename = ''
 stylename = ''
+
+
 @app.route('/')
 def index():
     return render_template('./index.HTML')
-@app.route('/stylize', methods = ['GET', 'POST'])
+
+
+@app.route('/stylize', methods=['GET', 'POST'])
 def get_img():
     if request.method == 'POST':
         if 'source' not in request.files:
@@ -35,15 +41,24 @@ def get_img():
         if source:
             global sourcename
             sourcename, extension1 = os.path.splitext(source.filename)
-            source.save(os.path.join(app.config['UPLOAD_FOLDER'], 'source.png'))
+            source.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], 'source.png'))
         if style:
             global stylename
             stylename, extension2 = os.path.splitext(style.filename)
             style.save(os.path.join(app.config['UPLOAD_FOLDER'], 'style.png'))
-        HighResST.styleTransfer(extension1,extension2)
+        content_path = 'static/uploads/source.png'
+        x = LowResST.load_img_and_preprocess(content_path)
+        h, w = x.shape[1:3]
+        if h > 400 or w > 400:
+            HighResST.styleTransfer(extension1, extension2)
+        else:
+            LowResST.styleTransfer(extension1, extension2)
         render_template('./styletransfer.HTML')
     return render_template('./styletransfer.HTML')
-@app.route('/colorize', methods = ['GET', 'POST'])
+
+
+@app.route('/colorize', methods=['GET', 'POST'])
 def get_img_color():
     if request.method == 'POST':
         if 'source' not in request.files:
@@ -56,8 +71,11 @@ def get_img_color():
         if source:
             global sourcename
             sourcename, extension1 = os.path.splitext(source.filename)
-            source.save(os.path.join(app.config['UPLOAD_FOLDER'], 'source.png'))
+            source.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], 'source.png'))
         Colorization.color()
         render_template('./colorization.HTML')
     return render_template('./colorization.HTML')
-app.run(port = 5000)
+
+
+app.run(port=5000)
