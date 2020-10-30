@@ -13,9 +13,9 @@ from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
 import tensorflow.keras.backend as K
 from tensorflow.keras.preprocessing import image
-def color(sourcepath):
-    path = '/home/firethrone/Projects/Artistia/static/uploads'
-    img_path = os.path.join(path, sourcepath)
+def color():
+    path = 'static/uploads'
+    img_path = os.path.join(path, "source.png")
     reconstructed_model = tf.keras.models.load_model("ImageColorization/trained_models_v1/Autoencoder-epoch-95-loss-0.003109.hdf5")
     img = image.img_to_array(image.load_img(img_path))
     h, w = img.shape[0], img.shape[1]

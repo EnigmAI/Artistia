@@ -57,9 +57,9 @@ def compute_loss_and_grads(combination_image, base_image, style_reference_image)
     grads = tape.gradient(loss, combination_image)
     return loss, grads
 def styleTransfer(sourcepath, stylepath):
-    path = '/home/firethrone/Projects/Artistia/static/uploads'
-    base_image_path = os.path.join(path, sourcepath)
-    style_reference_image_path =os.path.join(path, sourcepath)
+    path = 'static/uploads'
+    base_image_path = os.path.join(path, "source.png")
+    style_reference_image_path =os.path.join(path, "style.png")
     result_prefix = "static/result"
     total_variation_weight = 1e-6
     style_weight = 1e-6

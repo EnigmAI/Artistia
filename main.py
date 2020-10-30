@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 import HighResST
 import Colorization
 app = Flask(__name__)
-UPLOAD_FOLDER = '/home/firethrone/Projects/Artistia/static/uploads'
+UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 sourcename = ''
@@ -34,13 +34,14 @@ def get_img():
             return redirect(request.url)
         if source:
             global sourcename
-            sourcename = secure_filename(source.filename)
-            source.save(os.path.join(app.config['UPLOAD_FOLDER'], sourcename))
+            sourcename, extension1 = os.path.splitext(source.filename)
+            source.save(os.path.join(app.config['UPLOAD_FOLDER'], 'source.png'))
         if style:
             global stylename
-            stylename = secure_filename(style.filename)
-            style.save(os.path.join(app.config['UPLOAD_FOLDER'], stylename))
-        HighResST.styleTransfer(sourcename,stylename)
+            stylename, extension2 = os.path.splitext(style.filename)
+            style.save(os.path.join(app.config['UPLOAD_FOLDER'], 'style.png'))
+        HighResST.styleTransfer(extension1,extension2)
+        render_template('./styletransfer.HTML')
     return render_template('./styletransfer.HTML')
 @app.route('/colorize', methods = ['GET', 'POST'])
 def get_img_color():
@@ -50,12 +51,13 @@ def get_img_color():
             return redirect(request.url)
         source = request.files['source']
         if source.filename == '':
-            flash('No selected file')
+            print('No selected file')
             return redirect(request.url)
         if source:
             global sourcename
-            sourcename = secure_filename(source.filename)
-            source.save(os.path.join(app.config['UPLOAD_FOLDER'], sourcename))
-        Colorization.color(sourcename)
+            sourcename, extension1 = os.path.splitext(source.filename)
+            source.save(os.path.join(app.config['UPLOAD_FOLDER'], 'source.png'))
+        Colorization.color()
+        render_template('./colorization.HTML')
     return render_template('./colorization.HTML')
 app.run(port = 5000)
