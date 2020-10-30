@@ -213,5 +213,5 @@ def styleTransfer(sourcepath, stylepath):
 
     # plt.imshow(scale_img(final_img))
     # plt.show()
-    fname = "static/result.png"
+    fname = "static/results/result.png"
     image.save_img(fname, scale_img(final_img))

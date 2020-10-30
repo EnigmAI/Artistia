@@ -84,7 +84,7 @@ def styleTransfer(sourcepath, stylepath):
     path = 'static/uploads'
     base_image_path = os.path.join(path, "source.png")
     style_reference_image_path = os.path.join(path, "style.png")
-    result_prefix = "static/result"
+    result_prefix = "static/results/result"
     total_variation_weight = 1e-6
     style_weight = 1e-6
     content_weight = 2.5e-8

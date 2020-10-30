@@ -45,7 +45,7 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="source.png" alt="no picture selected" width="200"
+                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/source.png')}}" alt="no picture selected" width="200"
                                 height="300">
                             <div class="card-body">
                                 <form action="/stylize" method="post" enctype="multipart/form-data">
@@ -64,7 +64,7 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="style.png" alt="no picture selected" width="200"
+                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/style.png')}}" alt="no picture selected" width="200"
                                 height="300">
                             <div class="card-body">
                                 <div class="form-group text-white">
@@ -88,7 +88,7 @@
             <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
                 <div>
                     <div class="card bg-danger">
-                        <img class="card-img-top text-white" src={{url_for('static', filename = 'result.png')}}
+                        <img class="card-img-top text-white" src="{{url_for('static', filename = 'results/result.png')}}"
                             alt="error" width="200" height="300">
                         <div class="card-body">
                             <h5 class="text-white">Result Image</h5>
