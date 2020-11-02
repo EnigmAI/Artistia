@@ -17,9 +17,9 @@ from tensorflow.keras.preprocessing import image
 
 def color():
     path = 'static/uploads'
-    img_path = os.path.join(path, "source.png")
-    reconstructed_model = tf.keras.models.load_model(
-        "ImageColorization/trained_models_v1/Autoencoder-epoch-95-loss-0.003109.hdf5")
+    img_path = os.path.join(path, "source1.png")
+    # reconstructed_model = tf.keras.models.load_model("ImageColorization/trained_models_v1/Autoencoder100.hdf5")
+    reconstructed_model = tf.keras.models.load_model("ImageColorization/trained_models_v2/U-Net-epoch-100-loss-0.006095.hdf5")
     img = image.img_to_array(image.load_img(img_path))
     h, w = img.shape[0], img.shape[1]
     img_color = []

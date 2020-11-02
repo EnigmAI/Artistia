@@ -1,6 +1,6 @@
 import tensorflow as tf
-if tf.__version__.startswith('2'):
-    tf.compat.v1.disable_eager_execution()
+# if tf.__version__.startswith('2'):
+#     tf.compat.v1.disable_eager_execution()
 
 from tensorflow.keras.layers import Input, Lambda, Dense, Flatten
 from tensorflow.keras.layers import AveragePooling2D, MaxPooling2D

@@ -30,10 +30,17 @@
     <section id="search">
 
         <div class="row">
-            <div class="col-sm-12 my-auto bg-danger" style="padding: 50px;">
+            <div class="col-sm-12 my-auto bg-danger text-white" style="padding: 50px;">
                 <a href={{url_for('index')}}>
-                <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px" width="200px"></center></a>
-        </div>
+                    <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px"
+                            width="200px"></center>
+                </a>
+                <div style="padding-top: 10px;"></div>
+                <center>
+                    <p><strong>Disclaimer: in case the image previews are not updated properly then try refreshing the
+                            page</strong></p>
+                </center>
+            </div>
 
     </section>
 
@@ -44,35 +51,37 @@
             <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
                 <center>
                     <div>
-                    <form action="/colorize" method="post" enctype="multipart/form-data">
-                        <div class="card bg-danger">
-                            <img class="card-img-top text-white" src={{url_for('static', filename = 'uploads/source.png')}} alt="no picture selected"
-                                width="200" height="300">
-                            <div class="card-body">
-                                
+                        <form action="/colorize" method="post" enctype="multipart/form-data">
+                            <div class="card bg-danger">
+                                <img class="card-img-top text-white"
+                                    src={{url_for('static', filename = 'uploads/source1.png')}} alt="no picture selected"
+                                    width="200" height="300">
+                                <div class="card-body">
+
                                     <div class="form-group text-white">
                                         <label for="exampleFormControlFile1"><strong>Choose a black & white or a
                                                 colored image</strong></label>
                                         <input type="file" class="form-control-file" name='source'>
                                     </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
-                <div style="padding-top: 20px;"></div>
-                <center>
-                    <button type="submit" class="btn btn-lg btn-warning" style="width: 300;">Colorize Image</button>
-                </center>
-                </form>
-                </div>
-                </center>
+                    <div style="padding-top: 20px;"></div>
+                    <center>
+                        <button type="submit" class="btn btn-lg btn-warning" style="width: 300;">Colorize Image</button>
+                    </center>
+                    </form>
             </div>
-            <br>
-            <center>
+            </center>
+        </div>
+        <br>
+        <center>
             <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src={{url_for('static', filename = 'results/result_color.png')}} alt="error" width="200"
+                            <img class="card-img-top text-white"
+                                src={{url_for('static', filename = 'results/result_color.png')}} alt="error" width="200"
                                 height="300">
                             <div class="card-body">
                                 <h5 class="text-white">Result Image</h5>

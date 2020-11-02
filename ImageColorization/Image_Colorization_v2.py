@@ -14,9 +14,10 @@ from tensorflow.keras.models import *
 import tensorflow.keras.backend as K
 from tensorflow.keras.preprocessing import image
 
-img_path = 'images/1.jpg'
+# img_path = 'ImageColorization/images/1.jpg'
+img_path = 'D:/assets/data/flickr/images/Flicker8k_Dataset/136639119_6040b00946.jpg'
 
-reconstructed_model = tf.keras.models.load_model("trained_models_v2/U-Net-epoch-100-loss-0.006095.hdf5")
+reconstructed_model = tf.keras.models.load_model("ImageColorization/trained_models_v2/U-Net-epoch-100-loss-0.006095.hdf5")
 
 img = image.img_to_array(image.load_img(img_path))
 h, w = img.shape[0], img.shape[1]
