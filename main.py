@@ -21,6 +21,8 @@ stylename = ''
 def index():
     if os.path.exists("static/uploads/source.png"):
         os.remove("static/uploads/source.png")
+    if os.path.exists("static/uploads/source1.png"):
+        os.remove("static/uploads/source1.png")
     if os.path.exists("static/uploads/style.png"):
         os.remove("static/uploads/style.png")
     if os.path.exists("static/results/result.png"):
@@ -83,7 +85,7 @@ def get_img_color():
             global sourcename
             sourcename, extension1 = os.path.splitext(source.filename)
             source.save(os.path.join(
-                app.config['UPLOAD_FOLDER'], 'source.png'))
+                app.config['UPLOAD_FOLDER'], 'source1.png'))
         Colorization.color()
         render_template('./colorization.HTML')
     return render_template('./colorization.HTML')
