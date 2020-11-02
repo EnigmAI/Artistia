@@ -31,8 +31,10 @@
 
         <div class="row">
             <div class="col-sm-12 my-auto bg-danger" style="padding: 50px;">
-                <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px" width="200px"></center>
-        </div>
+                <a href={{url_for('index')}}>
+                <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px" width="200px"></center></a>
+                </center>
+            </div>
 
     </section>
 
@@ -44,10 +46,10 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="source.png" alt="no picture selected"
-                                width="200" height="300">
+                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/source.png')}}" alt="no picture selected" width="200"
+                                height="300">
                             <div class="card-body">
-                                <form action = "/stylize" method = "post" enctype="multipart/form-data">
+                                <form action="/stylize" method="post" enctype="multipart/form-data">
                                     <div class="form-group text-white">
                                         <label for="exampleFormControlFile1"><strong>Choose a content
                                                 image</strong></label>
@@ -63,41 +65,40 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="style.png" alt="no picture selected"
-                                width="200" height="300">
+                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/style.png')}}" alt="no picture selected" width="200"
+                                height="300">
                             <div class="card-body">
-                                    <div class="form-group text-white">
-                                        <label for="exampleFormControlFile1"><strong>Choose a style
-                                                image</strong></label>
-                                        <input type="file" class="form-control-file" name="style">
-                                    </div>
+                                <div class="form-group text-white">
+                                    <label for="exampleFormControlFile1"><strong>Choose a style
+                                            image</strong></label>
+                                    <input type="file" class="form-control-file" name="style">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </center>
             </div>
             <div class="pricing-col col-lg-4 col-md-1" , style="padding: 20px;"></div>
-            <center>    <div style="padding-top: 20px;"></div>
-                                    <center>
-                                        <button type="submit" class="btn btn-lg btn-warning" style="width: 300;">Stylize Image</button>
-                                    </center>
-                                </div>
-                                </form>
-            </center>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-lg btn-warning" style="width: 300;">Stylize Image</button>
+        </center>
+        </form>
+        <center>
+            <div style="padding-top: 20px;"></div>
             <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
-                <center>
-                    <div>
-                        <div class="card bg-danger">
-                            <img class="card-img-top text-white" src={{url_for('static', filename = 'result.png')}} alt="error" width="200"
-                                height="300">
-                            <div class="card-body">
-                                <h5 class="text-white">Result Image</h5>
-                                <p class="text-white">Here is the stylized output</p>
-                            </div>
+                <div>
+                    <div class="card bg-danger">
+                        <img class="card-img-top text-white" src="{{url_for('static', filename = 'results/result.png')}}"
+                            alt="error" width="200" height="300">
+                        <div class="card-body">
+                            <h5 class="text-white">Result Image</h5>
+                            <p class="text-white">Here is the stylized output</p>
                         </div>
                     </div>
-                </center>
+                </div>
             </div>
+        </center>
         </div>
 
     </section>
