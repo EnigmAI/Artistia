@@ -30,9 +30,15 @@
     <section id="search">
 
         <div class="row">
-            <div class="col-sm-12 my-auto bg-danger" style="padding: 50px;">
+            <div class="col-sm-12 my-auto bg-danger text-white" style="padding: 50px;">
                 <a href={{url_for('index')}}>
-                <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px" width="200px"></center></a>
+                    <center><img src="{{url_for('static', filename = 'logo.png')}}" alt="logo" height="200px"
+                            width="200px"></center>
+                </a>
+                <div style="padding-top: 10px;"></div>
+                <center>
+                    <p><strong>Disclaimer: in case the image previews are not updated properly then try refreshing the
+                            page</strong></p>
                 </center>
             </div>
 
@@ -46,8 +52,9 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/source.png')}}" alt="no picture selected" width="200"
-                                height="300">
+                            <img class="card-img-top text-white"
+                                src="{{url_for('static', filename = 'uploads/source.png')}}" alt="no picture selected"
+                                width="200" height="300">
                             <div class="card-body">
                                 <form action="/stylize" method="post" enctype="multipart/form-data">
                                     <div class="form-group text-white">
@@ -65,8 +72,9 @@
                 <center>
                     <div>
                         <div class="card bg-danger">
-                            <img class="card-img-top text-white" src="{{url_for('static', filename = 'uploads/style.png')}}" alt="no picture selected" width="200"
-                                height="300">
+                            <img class="card-img-top text-white"
+                                src="{{url_for('static', filename = 'uploads/style.png')}}" alt="no picture selected"
+                                width="200" height="300">
                             <div class="card-body">
                                 <div class="form-group text-white">
                                     <label for="exampleFormControlFile1"><strong>Choose a style
@@ -89,8 +97,9 @@
             <div class="pricing-col col-lg-4 col-md-4" , style="padding: 20px;">
                 <div>
                     <div class="card bg-danger">
-                        <img class="card-img-top text-white" src="{{url_for('static', filename = 'results/result.png')}}"
-                            alt="error" width="200" height="300">
+                        <img class="card-img-top text-white"
+                            src="{{url_for('static', filename = 'results/result.png')}}" alt="error" width="200"
+                            height="300">
                         <div class="card-body">
                             <h5 class="text-white">Result Image</h5>
                             <p class="text-white">Here is the stylized output</p>

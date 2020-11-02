@@ -4,6 +4,7 @@ from uuid import uuid4
 import requests
 from flask import Flask, request, render_template, redirect, url_for, flash
 from werkzeug.utils import secure_filename
+import tensorflow as tf
 import HighResST
 import LowResST
 import Colorization
@@ -59,8 +60,10 @@ def get_img():
         x = LowResST.load_img_and_preprocess(content_path)
         h, w = x.shape[1:3]
         if h > 400 or w > 400:
+            tf.compat.v1.enable_eager_execution()
             HighResST.styleTransfer(extension1, extension2)
         else:
+            tf.compat.v1.disable_eager_execution()
             LowResST.styleTransfer(extension1, extension2)
         render_template('./styletransfer.HTML')
     return render_template('./styletransfer.HTML')
