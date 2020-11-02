@@ -24,6 +24,8 @@ def index():
         os.remove("static/uploads/style.png")
     if os.path.exists("static/results/result.png"):
         os.remove("static/results/result.png")
+    if os.path.exists("static/results/result_color.png"):
+        os.remove("static/results/result_color.png")
     return render_template('./index.HTML')
 
 
