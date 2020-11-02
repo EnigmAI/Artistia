@@ -18,6 +18,14 @@ stylename = ''
 
 @app.route('/')
 def index():
+    if os.path.exists("static/uploads/source.png"):
+        os.remove("static/uploads/source.png")
+    if os.path.exists("static/uploads/style.png"):
+        os.remove("static/uploads/style.png")
+    if os.path.exists("static/results/result.png"):
+        os.remove("static/results/result.png")
+    if os.path.exists("static/results/result_color.png"):
+        os.remove("static/results/result_color.png")
     return render_template('./index.HTML')
 
 

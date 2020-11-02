@@ -1,6 +1,6 @@
 # Artistia
 
-<center><img src="assets/logo.png" alt="logo"></center>
+<center><img src="assets/logo.png" alt="logo" height="200px" width="200px"></center>
 A website made using HTML, CSS, Bootstrap and Flask to perform computer vision related tasks like style transfer and image colorization. Style transfer was made using transfer learning(vgg16) and tensorflow framework in Python and for image colorization we trained an autoencoder on images obtained from Flickr dataset.
 
 ## Setting up and running the project
