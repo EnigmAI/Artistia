@@ -129,8 +129,8 @@ def styleTransfer(sourcepath, stylepath):
     global total_variation_weight
     global style_weight
     total_variation_weight = 1e-6
-    style_weight = 1e-6
-    content_weight = 2.5e-8
+    style_weight = 3e-6
+    content_weight = 5e-7
     width, height = image.load_img(base_image_path).size
     global img_nrows
     global img_ncols
@@ -160,11 +160,10 @@ def styleTransfer(sourcepath, stylepath):
         loss, grads = compute_loss_and_grads(
             combination_image, base_image, style_reference_image)
         optimizer.apply_gradients([(grads, combination_image)])
-        # print("Iteration %d: loss=%.2f" % (i, (loss)))
-        print("Iteration %d" % (i))
+        print("Iteration %d: loss=%.2f" % (i, (loss)))
     print(combination_image)
     img = deprocess_image(combination_image.numpy())
     fname = result_prefix + ".png"
     image.save_img(fname, img)
 
-# styleTransfer("a", "b")
+# styleTransfer("a.jpg", "b.jpg")
