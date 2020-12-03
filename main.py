@@ -61,6 +61,7 @@ def get_img():
         content_path = 'static/uploads/source.png'
         x = LowResST.load_img_and_preprocess(content_path)
         h, w = x.shape[1:3]
+        print(h, w)
         if h > 400 or w > 400:
             tf.compat.v1.enable_eager_execution()
             HighResST.styleTransfer(extension1, extension2)
