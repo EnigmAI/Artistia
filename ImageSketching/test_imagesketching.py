@@ -39,11 +39,12 @@ plt.imshow(img)
 plt.show()
 
 img = image.img_to_array(img)
+img = img/255.
 img = np.expand_dims(img, axis=0)
 
 output = reconstructed_model.predict(img)
 img = output[0]
 img = cv2.resize(img, (256, 256))
-# img = img*255
+img = img*255
 plt.imshow(img)
 plt.show()
