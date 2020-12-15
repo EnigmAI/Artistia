@@ -42,6 +42,7 @@
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -69,6 +70,20 @@
                         <form action="/colorize" method="GET">
                             <button type="submit" class="btn btn-lg btn-warning" style="width: 200;">
                                 Colorize
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{url_for('static', filename = 'sketching.jpg')}}"
+                        alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block" style="padding: 300px;">
+                        <h1>Image Sketching</h1>
+                        <p style="font-size: 20px;">Image sketching takes an input image of a face and then converts it
+                            into a sketch.</p>
+                        <form action="/sketch" method="GET">
+                            <button type="submit" class="btn btn-lg btn-warning" style="width: 200;">
+                                Sketch
                             </button>
                         </form>
                     </div>
