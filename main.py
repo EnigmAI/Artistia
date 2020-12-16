@@ -8,7 +8,7 @@ import tensorflow as tf
 import HighResST
 import LowResST
 import Colorization
-
+import Sketching
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -91,5 +91,22 @@ def get_img_color():
         render_template('./colorization.HTML')
     return render_template('./colorization.HTML')
 
-
-app.run(port=5000)
+@app.route('/sketch', methods=['GET', 'POST'])
+def get_img_sketch():
+    if request.method == 'POST':
+        if 'source' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        source = request.files['source']
+        if source.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if source:
+            global sourcename
+            sourcename, extension1 = os.path.splitext(source.filename)
+            source.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], 'source2.png'))
+        Sketching.sketch()
+        render_template('./sketching.HTML')
+    return render_template('./sketching.HTML')
+app.run(port=5000, debug=True)
