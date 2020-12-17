@@ -31,7 +31,7 @@ def dice_coef_loss(y_true, y_pred):
 def sketch():
     path = 'static/uploads'
     img_path = os.path.join(path, "source2.png")
-    reconstructed_model = tf.keras.models.load_model("ImageSketching/trained_models/model20.hdf5", custom_objects = {'dice_coef_loss': dice_coef_loss})
+    reconstructed_model = tf.keras.models.load_model("ImageSketching/trained_models/model100.hdf5", custom_objects = {'dice_coef_loss': dice_coef_loss})
 
     img = image.load_img(img_path, target_size=(256, 256, 3))
     img = image.img_to_array(img)
