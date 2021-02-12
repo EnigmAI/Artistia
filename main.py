@@ -9,6 +9,7 @@ import HighResST
 import LowResST
 import Colorization
 import Sketching
+import Pixelate
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -109,4 +110,29 @@ def get_img_sketch():
         Sketching.sketch()
         render_template('./sketching.HTML')
     return render_template('./sketching.HTML')
+
+@app.route('/pixel', methods=['GET', 'POST'])
+def get_img_pixel():
+    if request.method == 'POST':
+        if 'source' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        source = request.files['source']
+        if source.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if source:
+            global sourcename
+            sourcename, extension1 = os.path.splitext(source.filename)
+            source.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], 'source3.png'))
+        if 'size' not in request.form:
+            Pixelate.pixelate()
+            render_template('./pixel.HTML')
+            return render_template('./pixel.HTML')
+        size = request.form['size']
+        Pixelate.pixelate(pixel_size = int(size))
+        render_template('./pixel.HTML')
+    return render_template('./pixel.HTML')
+
 app.run(port=5000, debug=True)
