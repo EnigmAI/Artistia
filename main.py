@@ -8,7 +8,7 @@ import tensorflow as tf
 import HighResST
 import LowResST
 import Colorization
-import sketching
+import Sketching
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
