@@ -24,12 +24,16 @@ def index():
         os.remove("static/uploads/source.png")
     if os.path.exists("static/uploads/source1.png"):
         os.remove("static/uploads/source1.png")
+    if os.path.exists("static/uploads/source2.png"):
+        os.remove("static/uploads/source2.png")
     if os.path.exists("static/uploads/style.png"):
         os.remove("static/uploads/style.png")
     if os.path.exists("static/results/result.png"):
         os.remove("static/results/result.png")
     if os.path.exists("static/results/result_color.png"):
         os.remove("static/results/result_color.png")
+    if os.path.exists("static/results/result_sketch.png"):
+        os.remove("static/results/result_sketch.png")
     return render_template('./index.HTML')
 
 
@@ -107,7 +111,7 @@ def get_img_sketch():
             sourcename, extension1 = os.path.splitext(source.filename)
             source.save(os.path.join(
                 app.config['UPLOAD_FOLDER'], 'source2.png'))
-        Sketching.sketch()
+        sketching.sketch()
         render_template('./sketching.HTML')
     return render_template('./sketching.HTML')
 
