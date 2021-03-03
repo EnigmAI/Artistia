@@ -1,6 +1,6 @@
 from PIL import Image
 import os
-def pixelate(pixel_size = 4):
+def pixelate(pixel_size = 6):
     path = 'static/uploads'
     img_path = os.path.join(path, "source3.png")
     image = Image.open(img_path)
