@@ -1,23 +1,25 @@
 # Artistia
 
 <center><img src="assets/logo.png" alt="logo" height="200px" width="200px"></center>
-A website made using HTML, CSS, Bootstrap and Flask to perform computer vision related tasks like style transfer, image colorization and image sketching. Style transfer was made using transfer learning(vgg16) and tensorflow framework in Python and for image colorization we trained an autoencoder and the u-net model on images obtained from Flickr dataset. For, Image Sketching we trained the u-net model on images obtained from the APDrawingDB dataset.
+A website made using HTML, CSS, Bootstrap and Flask to perform computer vision related tasks like style transfer, image colorization, sketching and pixelating. Style transfer was made using transfer learning(vgg16) and tensorflow framework in Python and for image colorization we trained an autoencoder and the u-net model on images obtained from Flickr dataset. For, Image Sketching we trained the u-net model on images obtained from the APDrawingDB dataset.
 
 ## Setting up and running the project
 
-1. Fork the repo and clone it.
+1. Fork the repo and clone it
 ```
 git clone https://github.com/EnigmAI/Artistia.git
+cd Artistia
 ```
-2. To download the required packages run the commands below 
+2. Activate your conda or virtual Python environment
+3. To download the required packages run the commands below
 ```
 pip install -r requirements.txt
 ```
-3. To start the backend server run the following command
+4. To start the backend server run the following command
 ```
 python main.py
 ```
-4. Open your browser and navigate to the url below
+5. Open your browser and navigate to the url below
 ```
 http://localhost:5000
 ```
