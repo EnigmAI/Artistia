@@ -8,7 +8,8 @@ import tensorflow as tf
 import HighResST
 import LowResST
 import Colorization
-import sketching
+import Sketching
+import Pixelate
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -25,6 +26,8 @@ def index():
         os.remove("static/uploads/source1.png")
     if os.path.exists("static/uploads/source2.png"):
         os.remove("static/uploads/source2.png")
+    if os.path.exists("static/uploads/source3.png"):
+        os.remove("static/uploads/source3.png")
     if os.path.exists("static/uploads/style.png"):
         os.remove("static/uploads/style.png")
     if os.path.exists("static/results/result.png"):
@@ -33,6 +36,8 @@ def index():
         os.remove("static/results/result_color.png")
     if os.path.exists("static/results/result_sketch.png"):
         os.remove("static/results/result_sketch.png")
+    if os.path.exists("static/results/result_pixel.png"):
+        os.remove("static/results/result_pixel.png")
     return render_template('./index.HTML')
 
 
@@ -110,7 +115,32 @@ def get_img_sketch():
             sourcename, extension1 = os.path.splitext(source.filename)
             source.save(os.path.join(
                 app.config['UPLOAD_FOLDER'], 'source2.png'))
-        sketching.sketch()
+        Sketching.sketch()
         render_template('./sketching.HTML')
     return render_template('./sketching.HTML')
+
+@app.route('/pixel', methods=['GET', 'POST'])
+def get_img_pixel():
+    if request.method == 'POST':
+        if 'source' not in request.files:
+            print('No file part')
+            return redirect(request.url)
+        source = request.files['source']
+        if source.filename == '':
+            print('No selected file')
+            return redirect(request.url)
+        if source:
+            global sourcename
+            sourcename, extension1 = os.path.splitext(source.filename)
+            source.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], 'source3.png'))
+        if 'size' not in request.form:
+            Pixelate.pixelate()
+            render_template('./pixel.html')
+            return render_template('./pixel.html')
+        size = request.form['size']
+        Pixelate.pixelate(pixel_size = int(size))
+        render_template('./pixel.html')
+    return render_template('./pixel.html')
+
 app.run(port=5000, debug=True)
