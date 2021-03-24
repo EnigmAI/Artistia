@@ -5,11 +5,7 @@ import requests
 from flask import Flask, request, render_template, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 import tensorflow as tf
-import HighResST
-import LowResST
-import Colorization
-import Sketching
-import Pixelate
+from scripts import HighResST, LowResST, Colorization, Sketching, Pixelate
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])

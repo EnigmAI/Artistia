@@ -15,7 +15,7 @@ from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.applications.vgg19 import VGG19
 from tensorflow.keras.applications.vgg19 import preprocess_input
 from tensorflow.keras.preprocessing import image
-from keras.optimizers import SGD, schedules
+from tensorflow.keras.optimizers import SGD, schedules
 import tensorflow.keras.backend as K
 
 img_nrows, img_ncols = 0, 0
@@ -136,7 +136,9 @@ def styleTransfer(sourcepath, stylepath):
     global img_ncols
     img_nrows = 400
     img_ncols = int(width * img_nrows / height)
-    model = VGG19(weights="imagenet", include_top=False)
+    content_img = preprocess_image(base_image_path)
+    shape = content_img.shape[1:]
+    model = VGG19(weights="imagenet", include_top=False, input_shape=shape)
     outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
     global feature_extractor
     feature_extractor = Model(inputs=model.inputs, outputs=outputs_dict)
