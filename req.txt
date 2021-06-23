@@ -65,7 +65,7 @@ termcolor==1.1.0
 tifffile==2021.3.5
 tqdm==4.59.0
 typing-extensions==3.7.4.3
-urllib3==1.25.8
+urllib3==1.26.5
 Werkzeug==0.16.1
 wrapt==1.12.1
 zipp==3.4.1
